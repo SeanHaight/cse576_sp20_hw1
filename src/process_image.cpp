@@ -16,10 +16,12 @@ Image rgb_to_grayscale(const Image& im)
   Image gray(im.w,im.h,1); // create a new grayscale image (note: 1 channel)
   
   // TODO: calculate the pixels of 'gray'
-  
-  
-  NOT_IMPLEMENTED();
-  
+  for(int i = 0; i < im.w; i++){
+    for (int j = 0; j < im.h; j++){
+      gray(i,j,0) = .299*im(i,j,0) + .587*im(i,j,1) + .114*im(i,j,2);
+    }
+  }
+
   return gray;
   }
 
@@ -53,9 +55,10 @@ void shift_image(Image& im, int c, float v)
   assert(c>=0 && c<im.c); // needs to be a valid channel
   
   // TODO: shift all the pixels at the specified channel
-  
-  NOT_IMPLEMENTED();
-  
+  for(int i=0; i< im.w;i++)for(int j=0; j<im.h;j++)
+    {
+      im(i,j,c) += v;
+    }
   }
 
 // HW0 #8
