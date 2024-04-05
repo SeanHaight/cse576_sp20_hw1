@@ -54,9 +54,11 @@ void copy_image(Image& to, const Image& from)
   // allocating data for the new image
   to.data=(float*)calloc(from.w*from.h*from.c,sizeof(float));
   to.c=from.c;
+  to.w = from.w;
+  to.h = from.h;
   
   // TODO: populate the remaining fields in 'to' and copy the data
   // You might want to check how 'memcpy' function works
-  
-  NOT_IMPLEMENTED();
+  memcpy(to.data, from.data, from.c*from.w*from.h*sizeof(float));
+  return;
   }
