@@ -7,11 +7,7 @@
 // returns the 0-based location of the pixel value in the data array
 int pixel_address(const Image& im, int x, int y, int ch)
   {
-  // TODO: calculate and return the index
-  
-  NOT_IMPLEMENTED();
-  
-  return 0;
+  return im.h*im.w*ch + im.w*y + x;
   }
 
 // HW0 #1
@@ -21,10 +17,11 @@ int pixel_address(const Image& im, int x, int y, int ch)
 float get_clamped_pixel(const Image& im, int x, int y, int ch)
   {
   // TODO: clamp the coordinates and return the correct pixel value
+  int clmp_x = min(max(x,0), im.w - 1);
+  int clmp_y = min(max(y,0),im.h- 1);
+  int clmp_ch = min(max(ch,0),im.c - 1);
   
-  NOT_IMPLEMENTED();
-  
-  return 0.0;
+  return im(clmp_x,clmp_y,clmp_ch);
   }
 
 
@@ -34,8 +31,15 @@ float get_clamped_pixel(const Image& im, int x, int y, int ch)
 void set_pixel(Image& im, int x, int y, int c, float value)
   {
   // TODO: Only set the pixel to the value if it's inside the image
-  
-  NOT_IMPLEMENTED();
+  int clmp_x = min(max(x,0), im.w);
+  int clmp_y = min(max(y,0),im.h);
+  int clmp_ch = min(max(c,0),im.c);
+
+  if(x != clmp_x & y != clmp_y & c != clmp_ch) {
+    return;
+  }
+
+  im(x,y,c) = value;
   
   }
 
@@ -55,5 +59,4 @@ void copy_image(Image& to, const Image& from)
   // You might want to check how 'memcpy' function works
   
   NOT_IMPLEMENTED();
-  
   }
