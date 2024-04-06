@@ -33,11 +33,22 @@ void test_HSV()
         im2.save_image("output/colorspace_result");
     }
 
+void test_scale()
+    {
+        Image im = load_image("data/dog.jpg");
+        rgb_to_hsv(im);
+        scale_image(im, 1, 2);
+        clamp_image(im);
+        hsv_to_rgb(im);
+        im.save_image("output/dog_scale_saturated");
+    }
+
 void run_tests()
   {
   test_clamp_image();
   test_shift_image();
   test_HSV();
+  test_scale();
   }
 
 

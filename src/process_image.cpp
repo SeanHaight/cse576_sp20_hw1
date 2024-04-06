@@ -69,10 +69,10 @@ void scale_image(Image& im, int c, float v)
   {
   assert(c>=0 && c<im.c); // needs to be a valid channel
   
-  // TODO: scale all the pixels at the specified channel
-  
-  NOT_IMPLEMENTED();
-  
+  for(int i=0; i< im.w;i++)for(int j=0; j<im.h;j++)
+    {
+      im(i,j,c) *= v;
+    }  
   }
 
 
