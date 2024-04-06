@@ -26,4 +26,5 @@ link_libraries(uwimg++ m stdc++)
 
 
 add_executable(test0 src/test/test0.cpp)
+add_executable(seanstest src/test/seanstest.cpp)
 

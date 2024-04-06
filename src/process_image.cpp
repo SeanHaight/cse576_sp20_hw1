@@ -54,7 +54,7 @@ void shift_image(Image& im, int c, float v)
   {
   assert(c>=0 && c<im.c); // needs to be a valid channel
   
-  // TODO: shift all the pixels at the specified channel
+  //shift all the pixels at the specified channel
   for(int i=0; i< im.w;i++)for(int j=0; j<im.h;j++)
     {
       im(i,j,c) += v;
@@ -80,9 +80,11 @@ void scale_image(Image& im, int c, float v)
 // Image& im: input image to be modified in-place
 void clamp_image(Image& im)
   {
-  // TODO: clamp all the pixels in all channel to be between 0 and 1
-  
-  NOT_IMPLEMENTED();
+  //clamp all the pixels in all channel to be between 0 and 1
+    for(int i=0; i< im.w;i++)for(int j=0; j<im.h;j++)for(int c=0; c<im.c;c++)
+    {
+      im(i,j,c) = min(max(im(i,j,c),(float)0),(float)1);
+    }
   
   }
 
