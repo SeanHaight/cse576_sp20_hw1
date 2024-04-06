@@ -2,7 +2,6 @@
 #include "../utils.h"
 
 #include <string>
-
 using namespace std;
 
 void test_clamp_image()
@@ -24,10 +23,21 @@ void test_shift_image()
         im.save_image("output/shift_result");
     }
 
+void test_HSV()
+    {
+        Image im2 = load_image("data/dog.jpg");
+        rgb_to_hsv(im2);
+        shift_image(im2, 1, .2);
+        clamp_image(im2);
+        hsv_to_rgb(im2);
+        im2.save_image("output/colorspace_result");
+    }
+
 void run_tests()
   {
   test_clamp_image();
   test_shift_image();
+  test_HSV();
   }
 
 
